@@ -10,7 +10,7 @@ class Player:
         :param
         :return int() """
 
-        return int(len(self.used_words))
+        return len(self.used_words)
 
     def add_used_word(self, word):
         """добавление слова в использованные
@@ -18,8 +18,7 @@ class Player:
         :param
         :return None"""
 
-        self.word = word
-        self.used_words.append(self.word)
+        self.used_words.add(self.word)
 
     def check_used_word(self, word):
         """проверка использования данного
@@ -34,3 +33,4 @@ class Player:
 
     def __str__(self):
         return self.name
+
