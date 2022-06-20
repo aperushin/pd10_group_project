@@ -18,7 +18,7 @@ class Player:
         :param
         :return None"""
 
-        self.used_words.add(self.word)
+        self.used_words.add(word)
 
     def check_used_word(self, word):
         """проверка использования данного
