@@ -1,6 +1,6 @@
 from constants import WORD_JSON, STOP_WORDS
 from player import Player
-from utils import load_random_word
+from utils import load_random_word, get_ending
 
 
 def main():
@@ -10,7 +10,7 @@ def main():
     player = Player(input('Введите имя игрока\n'))
 
     print(f'Привет, {player.name}!')
-    print(f'Составьте {subwords_count} слов из слова {word.word}')
+    print(f'Составьте {subwords_count} слов из слова {word.word.upper()}')
     print(f'Слова должны быть не короче {min_length} букв')
     print(f'Чтобы закончить игру, угадайте все слова или напишите "{STOP_WORDS[0]}"')
     print('Поехали, ваше первое слово?')
@@ -31,13 +31,16 @@ def main():
         if word.is_subword(user_answer):
             player.correct_answers += 1
             print(
-                f'Верно! Угадано {player.correct_answers}'
-                f'слов из {subwords_count}'
+                f'Верно! Угадано {player.correct_answers} '
+                f'слов{get_ending(player.correct_answers)} из {subwords_count}'
             )
         else:
             print('Неверно')
 
-    print(f'Игра завершена, вы угадали {player.correct_answers} слов!')
+    print(
+        f'Игра завершена, вы угадали {player.correct_answers} '
+        f'слов{get_ending(player.correct_answers)}!'
+    )
 
 
 if __name__ == '__main__':

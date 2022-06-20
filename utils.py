@@ -23,3 +23,19 @@ def load_random_word(url: str) -> BasicWord:
     # Выбираем случайный элемент из загруженного списка
     random_word = random.choice(response.json())
     return BasicWord(**random_word)
+
+
+def get_ending(number: int) -> str:
+    """
+    Возвращает окончание слова, согласующееся с числительным
+
+    Версия для слова "слово"
+    """
+    n_abs = abs(number)
+    mod = n_abs % 10
+    if (10 < (n_abs % 100) < 15) or mod > 4 or mod == 0:
+        return ''
+    if mod == 1:
+        return 'о'
+    if 2 <= mod <= 4:
+        return 'а'
