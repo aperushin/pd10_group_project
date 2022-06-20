@@ -21,4 +21,4 @@ class Player:
         return f'{self.__class__.__name__}({self.name!r})'
 
     def __str__(self) -> str:
-        return self.name
+        return f'Игрок {self.name}'
