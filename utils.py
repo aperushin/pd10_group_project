@@ -1,9 +1,10 @@
 import requests
 import random
 from basic_word import BasicWord
+from player import Player
 
 
-def load_random_word(url: str) -> BasicWord:
+def load_random_word(url: str = 'https://jsonkeeper.com/b/IWUE') -> BasicWord:
     """
     Загружает с web-ресурса список словарей со словами и их подсловами
 
@@ -23,3 +24,20 @@ def load_random_word(url: str) -> BasicWord:
     # Выбираем случайный элемент из загруженного списка
     random_word = random.choice(response.json())
     return BasicWord(**random_word)
+
+
+def check_user_answer(user_answer: str, player: Player, word_for_game: BasicWord) -> bool:
+    """
+    Проверяет ответ пользователя на соответствие критериям
+    """
+    if len(user_answer) < 3:
+        print("слишком короткое слово")
+
+    elif player.check_used_word(user_answer.lower()):
+        print("уже использовано")
+
+    elif not word_for_game.is_subword(user_answer.lower()):
+        print("неверно")
+
+    else:
+        return True
