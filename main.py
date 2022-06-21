@@ -20,7 +20,7 @@ def main():
             break
 
         if check_user_answer(user_answer, player_1, word_for_game):
-            print("отлично, принимается!")
+            print("Отлично, принимается!")
             player_1.add_used_word(user_answer.lower())
 
     print(f"Игра завершена, вы угадали {player_1.count_used_words()} слов!")
