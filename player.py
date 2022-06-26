@@ -4,27 +4,23 @@ class Player:
         self.name = name
         self.used_words = set()
 
-    def count_used_words(self) -> int:
-        """
-        получение количества использованных
-        """
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.name!r})"
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def guessed_words(self) -> int:
+        """Возвращает количества угаданных слов"""
         return len(self.used_words)
 
     def add_used_word(self, word: str):
-        """
-        добавление слова в использованные
-        """
+        """добавление слова в использованные"""
         self.used_words.add(word)
 
     def check_used_word(self, word):
         """
         проверка использования данного
         """
-
         return word in self.used_words
-
-    def __repr__(self):
-        return f"Player {self.name}"
-
-    def __str__(self):
-        return self.name
