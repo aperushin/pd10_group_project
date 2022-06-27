@@ -3,7 +3,7 @@ import random
 from basic_word import BasicWord
 
 
-def load_random_word(url: str = 'https://jsonkeeper.com/b/IWUE') -> BasicWord:
+def load_random_word(url: str) -> BasicWord:
     """
     Загружает с web-ресурса список словарей со словами и их подсловами
 
@@ -16,16 +16,16 @@ def load_random_word(url: str = 'https://jsonkeeper.com/b/IWUE') -> BasicWord:
     try:
         response = requests.get(url)
         response.raise_for_status()
-        # При проблемах с загрузкой или интернет соединением - выводим комментарий и завершаем работу приложения
+        # При проблемах с загрузкой или интернет соединением - возвращаем None
     except:
-        quit("Не удалось загрузить вопросы из-за проблем с сетью")
+        return None
 
         # Выбираем случайный элемент из загруженного списка
     random_word = random.choice(response.json())
     return BasicWord(**random_word)
 
 
-def get_ending(number: int) -> str: # thanks Николай Мартин
+def get_ending(number: int) -> str:  # thanks Николай Мартин
     """
     Возвращает окончание слова, согласующееся с числительным
 
