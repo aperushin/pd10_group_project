@@ -1,9 +1,13 @@
+from constants import DATA_SOURSE
 from player import Player
 from utils import load_random_word, get_ending
 
 
 def main():
-    word_for_game = load_random_word()
+    word_for_game = load_random_word(DATA_SOURSE)
+
+    if word_for_game is None:
+        quit("Не удалось загрузить вопросы из-за проблем с сетью")
 
     player = Player(input("Введите имя игрока:\n"))
     print(f"Привет {player}\n"
