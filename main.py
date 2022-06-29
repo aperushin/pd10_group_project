@@ -13,7 +13,7 @@ def main():
     print(f"Привет {player}\n"
           f"Составьте {word_for_game.subwords_quantity} слов из слова '{word_for_game}'\n"
           f"Слова должны быть не короче 3 букв\n"
-          f"Чтобы закончить игру, угадайте все слова или напишите 'stop'\n"
+          f"Чтобы закончить игру, угадайте все слова или напишите 'стоп' или 'stop'\n"
           f"Поехали, ваше первое слово?")
 
     while player.guessed_words != word_for_game.subwords_quantity:
